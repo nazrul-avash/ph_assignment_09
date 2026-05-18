@@ -32,8 +32,6 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-b border-violet-100 sticky top-0 z-50 shadow-[0_1px_12px_rgba(124,58,237,0.07)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-4">
-
-        {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
           <div className="w-[38px] h-[38px] bg-gradient-to-br from-violet-600 to-violet-400 rounded-xl flex items-center justify-center flex-shrink-0">
             <svg
