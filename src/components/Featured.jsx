@@ -20,7 +20,7 @@ const Featured = async () => {
         </div>
 
 
-        <div className="grid grid-cols-4 gap-5 mt-10 mx-auto">
+        <div className="grid grid-cols-3 gap-5 mt-10 mx-auto">
             {  
             doctors.map(doctor => <DoctorCard key={doctor._id} doctor={doctor} ></DoctorCard>)}
         </div>

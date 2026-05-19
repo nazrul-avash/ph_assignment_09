@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const DoctorCard = ({doctor}) => {
@@ -54,9 +55,11 @@ const DoctorCard = ({doctor}) => {
         </div>
 
         {/* Button */}
+            <Link href={`/doctors/${doctor._id}`}>
         <button className="mt-6 w-full rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:from-violet-500 hover:to-purple-500">
           View Profile
         </button>
+        </Link>
       </div>
     </div>
     );
