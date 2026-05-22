@@ -1,8 +1,6 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
-import { Pencil } from "lucide-react";
-import Link from "next/link";
 import EditProfileModal from "@/components/EditProfileModal";
 
 const MyProfilePage = async () => {
@@ -10,15 +8,31 @@ const MyProfilePage = async () => {
     headers: await headers(),
   });
 
-  const user = session?.user;
-  const email = session?.user?.email;
+  const sessionUser = session?.user;
 
-  if (!user) {
+  if (!sessionUser) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <p className="text-gray-500">You are not logged in.</p>
       </div>
     );
+  }
+
+  // Fetch REAL user from database
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/profile/${
+      sessionUser.email}`,
+    {
+      method: "GET",
+      credentials: "include"
+     
+    }
+  );
+
+  const user = await res.json();
+
+  if (!res.ok) {
+    throw new Error(user?.message || "Failed to fetch user");
   }
 
   return (
@@ -49,36 +63,38 @@ const MyProfilePage = async () => {
           </div>
 
           <div className="px-8 pb-10">
-{/* PROFILE HEADER */}
-<div className="relative flex flex-col items-center">
 
-  {/* AVATAR */}
-  <div className="absolute -top-14">
-    <div className="rounded-[28px] border-4 border-white bg-white p-1 shadow-xl">
-      <Image
-        src={user.image || "/avatar.png"}
-        alt="profile"
-        width={120}
-        height={120}
-        className="h-[120px] w-[120px] rounded-[22px] object-cover"
-      />
-    </div>
-  </div>
+            {/* PROFILE HEADER */}
+            <div className="relative flex flex-col items-center">
 
-  {/* SPACER (push content below avatar) */}
-  <div className="h-26" />
+              {/* AVATAR */}
+              <div className="absolute -top-14">
+                <div className="rounded-[28px] border-4 border-white bg-white p-1 shadow-xl">
+                  <Image
+                    src={user.image || "/avatar.png"}
+                    alt="profile"
+                    width={120}
+                    height={120}
+                    className="h-[120px] w-[120px] rounded-[22px] object-cover"
+                  />
+                </div>
+              </div>
 
-  {/* NAME */}
-  <h2 className="text-3xl font-bold text-indigo-950">
-    {user.name}
-  </h2>
+              {/* SPACER */}
+              <div className="h-26" />
 
-  {/* EMAIL */}
-  <p className="mt-1 text-gray-500">
-    {user.email}
-  </p>
+              {/* NAME */}
+              <h2 className="text-3xl font-bold text-indigo-950">
+                {user.name}
+              </h2>
 
-</div>
+              {/* EMAIL */}
+              <p className="mt-1 text-gray-500">
+                {user.email}
+              </p>
+
+            </div>
+
             {/* DETAILS BOX */}
             <div className="mt-8 space-y-4">
 
@@ -100,9 +116,7 @@ const MyProfilePage = async () => {
 
             {/* BUTTON */}
             <div className="mt-8 flex justify-center">
-              
-                <EditProfileModal email={user.email} />
-             
+              <EditProfileModal user={user} />
             </div>
 
           </div>

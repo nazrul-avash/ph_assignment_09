@@ -1,17 +1,18 @@
 "use client";
 import { Button, Modal } from '@heroui/react';
+import { userAc } from 'better-auth/plugins/admin/access';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { toast } from 'sonner';
 
-const EditProfileModal = ({ email }) => {
+const EditProfileModal = ({ user }) => {
     const router = useRouter();
     const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const profile = Object.fromEntries(formData.entries());
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/profile/${email}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/profile/${user.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -24,9 +25,9 @@ const EditProfileModal = ({ email }) => {
     if (!res.ok) {
       throw new Error(data?.message || "Update failed");
     }
-
-    toast.success("Profile updated successfully");
     router.refresh();
+    toast.success("Profile updated successfully");
+    
 
   };
     return (
@@ -80,7 +81,7 @@ const EditProfileModal = ({ email }) => {
               <input
                 type="text"
                 name="name"
-                defaultValue="Jhon Doe"
+                defaultValue={user.name}
                 className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 outline-none transition focus:border-violet-500"
               />
             </div>
@@ -94,25 +95,12 @@ const EditProfileModal = ({ email }) => {
               <input
                 type="email"
                 name="email"
-                defaultValue="nazrul.avash2@gmail.com"
+                defaultValue={user.email}
                 className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 outline-none transition focus:border-violet-500"
               />
             </div>
 
-            {/* EMAIL VERIFIED */}
-            <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">
-                Email Verified
-              </label>
-
-              <input
-                type="text"
-                value="Not Verified"
-                readOnly
-                className="w-full cursor-not-allowed rounded-2xl border border-violet-200 bg-violet-100 px-5 py-4 text-gray-500"
-              />
-            </div>
-
+        
             {/* PROFILE IMAGE */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">
@@ -122,7 +110,7 @@ const EditProfileModal = ({ email }) => {
               <input
                 type="text"
                 name="image"
-                defaultValue="https://unsplash.com/s/photos/user-profile"
+                defaultValue="Put new URL here"
                 className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 outline-none transition focus:border-violet-500"
               />
             </div>
