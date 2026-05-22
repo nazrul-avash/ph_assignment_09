@@ -48,12 +48,12 @@ export default function NotFound() {
         >
           Go Home
         </Link>
-        <Link
-          href="javascript:history.back()"
-          className="w-full sm:w-auto px-6 py-2.5 bg-white border border-[#E5E7EB] hover:bg-[#EDE9FE] text-[#374151] font-medium rounded-xl transition-colors text-sm"
-        >
-          Go Back
-        </Link>
+     <Link
+  href="/doctors"
+  className="w-full sm:w-auto px-6 py-2.5 bg-white border border-[#E5E7EB] hover:bg-[#EDE9FE] text-[#374151] font-medium rounded-xl transition-colors text-sm"
+>
+  Go Back
+</Link>
       </div>
 
       {/* Decorative dots */}

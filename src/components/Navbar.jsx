@@ -19,7 +19,8 @@ const Navbar = () => {
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "All Appointments", path: "/appointments" },
-    { label: "Dashboard", path: "/dashboard" },
+    { label: "My Bookings", path: "/my-bookings" },
+    { label: "My Profile", path: "/MyProfile" },
   ];
 
   const linkClass = (path) =>

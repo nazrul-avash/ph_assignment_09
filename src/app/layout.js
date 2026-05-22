@@ -2,6 +2,7 @@ import {  Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <Toaster position="top-right" richColors />
         <Navbar></Navbar>
         {children}
         <Footer></Footer>

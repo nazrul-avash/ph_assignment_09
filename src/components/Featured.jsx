@@ -6,7 +6,7 @@ import DoctorCard from "./DoctorCard";
 const Featured = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/doctors`);
     const doctors = await res.json();
-    console.log(doctors[1]);
+
     
 
     return (
