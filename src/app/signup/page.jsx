@@ -15,6 +15,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 const SignupPage = () => {
   const onSubmit = async (e) => {
@@ -35,7 +36,7 @@ const SignupPage = () => {
     }
 
     if (error) {
-      alert(error.message || "Registration failed");
+      toast.error(error.message || "Registration failed");
     }
   };
 
@@ -49,7 +50,7 @@ const SignupPage = () => {
     }
 
     if (error) {
-      alert("Social login failed");
+      toast.error(error.message || "Social signup failed");
     }
   };
 

@@ -10,10 +10,15 @@ import {
   TextField,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
 
 const LoginPage = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const next = searchParams.get("next") || "/";
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -22,17 +27,18 @@ const LoginPage = () => {
       email: user.email,
       password: user.password,
     });
-    if (data) {
-      redirect("/");
-    }
+    
     if (error) {
-      alert("Invalid email or password.");
+      toast.error(error.message || "Login failed");
+      return;
     }
+    router.push(next);
   };
 
   const handleGoogleSignin = async () => {
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: next,
     });
   };
 

@@ -12,7 +12,11 @@ const slides = [
    
   },
   {
-    img: "/banner2.jpg",
+    img: "/banner2.png",
+    
+  },
+  {
+    img: "/banner3.png",
     
   },
 ];

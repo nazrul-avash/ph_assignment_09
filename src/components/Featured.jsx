@@ -10,7 +10,7 @@ const Featured = async () => {
     
 
     return (
-      <div className="mt-20 max-w-7xl mx-auto rounded-[36px] border border-violet-200 bg-violet-50 px-6 py-12 lg:px-10">
+      <div className="mt-20 max-w-7xl mx-auto rounded-[36px] border border-violet-200 bg-violet-50 mb-20 px-6 py-12 lg:px-10">
 
   {/* Header */}
   <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
