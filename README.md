@@ -2,7 +2,7 @@
 
 A modern, full-stack Doctor Appointment Booking System that allows users to browse doctors, book appointments, and manage their healthcare schedule seamlessly.
 
-🔗 **Live Site:** [https://docappoint.vercel.app](https://docappoint.vercel.app)
+🔗 **Live Site:** [https://docappoint-five.vercel.app/](https://docappoint-five.vercel.app/)
 
 ---
 
