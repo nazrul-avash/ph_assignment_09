@@ -9,7 +9,7 @@ import React from "react";
 
 const DoctorCard = ({ doctor }) => {
   return (
-    <div className="group relative overflow-hidden rounded-[34px] border border-violet-500/10 bg-[#140d24] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-violet-500/30 hover:shadow-[0_25px_80px_rgba(139,92,246,0.25)]">
+    <div className="h-full flex flex-col group relative overflow-hidden rounded-[34px] border border-violet-500/10 bg-[#140d24] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-violet-500/30 hover:shadow-[0_25px_80px_rgba(139,92,246,0.25)]">
 
       {/* Gradient Accent */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-fuchsia-500/10 opacity-0 transition duration-500 group-hover:opacity-100"></div>

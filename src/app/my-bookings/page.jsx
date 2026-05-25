@@ -129,7 +129,7 @@ const MyBookingsPage = async () => {
 
             {/* button */}
             <Link
-              href="/"
+              href="/appointments"
               className="mt-10 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-violet-300 transition duration-300 hover:scale-[1.02] hover:opacity-95 sm:text-base"
             >
               Book Your First Appointment

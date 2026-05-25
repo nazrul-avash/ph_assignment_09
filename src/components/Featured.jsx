@@ -44,7 +44,7 @@ const Featured = async () => {
 
   {/* Cards */}
   <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-    {doctors.map((doctor) => (
+    {doctors.slice(0, 3).map((doctor) => (
       <DoctorCard
         key={doctor._id}
         doctor={doctor}
