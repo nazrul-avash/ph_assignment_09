@@ -56,7 +56,7 @@ const Banner = () => {
                   </button>
 
                   <button className="bg-white/20 hover:bg-white/30 px-6 py-3 uppercase">
-                    View Destination
+                    View Bookings
                   </button>
                 </div>
               </div>

@@ -109,8 +109,9 @@ const EditProfileModal = ({ user }) => {
 
               <input
                 type="text"
+                
                 name="image"
-                defaultValue="Put new URL here"
+                defaultValue={user.image || "Put new URL here"}
                 className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-5 py-4 outline-none transition focus:border-violet-500"
               />
             </div>

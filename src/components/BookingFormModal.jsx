@@ -129,131 +129,140 @@ export function BookingFormModal({ doctor }) {
                   </div>
 
                   {/* FORM */}
-                  <form
-                    onSubmit={handleBooking}
-                    className="mt-8 grid gap-5 md:grid-cols-2"
-                  >
-                    {/* Email */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Email Address
-                      </label>
+                 <form
+  onSubmit={handleBooking}
+  className="mt-8 grid gap-5 md:grid-cols-2"
+>
+  {/* Email */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Email Address
+    </label>
 
-                      <input
-                        type="email"
-                        value={user?.email || ""}
-                        readOnly
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
-                      />
-                    </div>
+    <input
+      type="email"
+      value={user?.email || ""}
+      readOnly
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
+    />
+  </div>
 
-                    {/* Doctor */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Doctor Name
-                      </label>
+  {/* Doctor */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Doctor Name
+    </label>
 
-                      <input
-                        type="text"
-                        value={name}
-                        readOnly
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
-                      />
-                    </div>
+    <input
+      type="text"
+      value={name}
+      readOnly
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
+    />
+  </div>
 
-                    {/* Patient */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Patient Name
-                      </label>
+  {/* Patient */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Patient Name
+    </label>
 
-                      <input
-                        type="text"
-                        value={patientName}
-                        onChange={(e) => setPatientName(e.target.value)}
-                        placeholder="Rahim Uddin"
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
-                      />
-                    </div>
+    <input
+      type="text"
+      value={patientName}
+      onChange={(e) => setPatientName(e.target.value)}
+      placeholder="Rahim Uddin"
+      required
+      minLength={3}
+      pattern="^[A-Za-z\s]+$"
+      title="Name should contain only letters"
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4 outline-none"
+    />
+  </div>
 
-                    {/* Gender */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Gender
-                      </label>
+  {/* Gender */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Gender
+    </label>
 
-                      <select
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value)}
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
-                      >
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
+    <select
+      value={gender}
+      onChange={(e) => setGender(e.target.value)}
+      required
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
+    >
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
 
-                    {/* Phone */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Phone
-                      </label>
+  {/* Phone */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Phone
+    </label>
 
-                      <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="01712345678"
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
-                      />
-                    </div>
+    <input
+      type="tel"
+      value={phone}
+      onChange={(e) => setPhone(e.target.value)}
+      placeholder="01712345678"
+      required
+      pattern="^(?:\+8801|01)[3-9]\d{8}$"
+      title="Enter a valid Bangladeshi phone number"
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
+    />
+  </div>
 
-                    {/* Date */}
-                    <div>
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Appointment Date
-                      </label>
+  {/* Date */}
+  <div>
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Appointment Date
+    </label>
 
-                      <input
-                        type="date"
-                        value={appointmentDate}
-                        onChange={(e) =>
-                          setAppointmentDate(e.target.value)
-                        }
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
-                      />
-                    </div>
+    <input
+      type="date"
+      value={appointmentDate}
+      onChange={(e) => setAppointmentDate(e.target.value)}
+      required
+      min={new Date().toISOString().split("T")[0]}
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
+    />
+  </div>
 
-                    {/* Time */}
-                    <div className="md:col-span-2">
-                      <label className="mb-2 block text-sm font-medium text-gray-700">
-                        Appointment Time
-                      </label>
+  {/* Time */}
+  <div className="md:col-span-2">
+    <label className="mb-2 block text-sm font-medium text-gray-700">
+      Appointment Time
+    </label>
 
-                      <select
-                        value={appointmentTime}
-                        onChange={(e) =>
-                          setAppointmentTime(e.target.value)
-                        }
-                        className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
-                      >
-                        <option value="">Select Time</option>
-                        <option>09:00 AM</option>
-                        <option>10:30 AM</option>
-                        <option>04:00 PM</option>
-                      </select>
-                    </div>
+    <select
+      value={appointmentTime}
+      onChange={(e) => setAppointmentTime(e.target.value)}
+      required
+      className="w-full rounded-2xl border border-violet-200 bg-violet-50 px-4 py-4"
+    >
+      <option value="">Select Time</option>
+      <option value="09:00 AM">09:00 AM</option>
+      <option value="10:30 AM">10:30 AM</option>
+      <option value="04:00 PM">04:00 PM</option>
+    </select>
+  </div>
 
-                    {/* Button */}
-                    <div className="md:col-span-2">
-                      <button
-                        type="submit"
-                        className="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-4 text-sm font-semibold text-white"
-                      >
-                        Confirm Appointment
-                      </button>
-                    </div>
-                  </form>
+  {/* Button */}
+  <div className="md:col-span-2">
+    <Button
+      type="submit"
+      
+      className="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-4 text-sm font-semibold text-white"
+    >
+      Confirm Appointment
+    </Button>
+  </div>
+</form>
                 </div>
               </Surface>
             </Modal.Body>

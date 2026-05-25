@@ -1,3 +1,20 @@
+
+export const metadata = {
+  title: "My Appointments | DocAppoint",
+  description:
+    "View and manage your medical appointments, including doctor details, schedules, and booking status.",
+  keywords: [
+    "appointments",
+    "doctor booking",
+    "medical schedule",
+    "healthcare dashboard",
+    "patient appointments",
+  ],
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
@@ -10,6 +27,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import AllAppointmentsClient from "@/components/AllAppointementsClient";
+
 
 const AllAppointmentsPage = async () => {
   const session = await auth.api.getSession({

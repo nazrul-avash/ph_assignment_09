@@ -9,10 +9,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "DocAppoint",
-  description: "Find and book appointments with top-rated doctors in your area. Browse specialties, check availability, and manage your healthcare schedule with DocAppoint.",
-   keywords: ["doctor appointment", "book doctor", "online healthcare", "medical appointment", "find doctor", "hospital booking", "healthcare Bangladesh", "doctor schedule"],
-  
+  title: {
+    default: "Doctor Appointment System",
+    template: "%s | Doctor Appointment System",
+  },
+  description: "Book doctor appointments easily and quickly.",
+  keywords: ["doctor", "appointment", "healthcare"],
+  metadataBase: new URL("https://yourdomain.com"),
 };
 
 export default function RootLayout({ children }) {

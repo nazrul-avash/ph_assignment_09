@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "My Profile",
+  description:
+    "View and manage your personal profile information, including name, email, and account settings.",
+};
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";

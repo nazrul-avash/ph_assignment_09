@@ -14,16 +14,17 @@ import {
 
 import { FcGoogle } from "react-icons/fc";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const SignupPage = () => {
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-
+  
     const { data, error } = await authClient.signUp.email({
       name: user.name,
       email: user.email,
@@ -32,7 +33,7 @@ const SignupPage = () => {
     });
 
     if (data) {
-      redirect("/login");
+      router.push("/login");
     }
 
     if (error) {
@@ -46,7 +47,7 @@ const SignupPage = () => {
     });
 
     if (data) {
-      redirect("/");
+      router.push("/");
     }
 
     if (error) {

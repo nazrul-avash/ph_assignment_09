@@ -10,20 +10,20 @@ import {
   TextField,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import {  useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "sonner";
+import { Suspense } from "react";
 
-const LoginPage = () => {
+const LoginForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const next = searchParams.get("next") || "/";
+  const callbackUrl= searchParams.get("callbackUrl") || "/";
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-    const { data, error } = await authClient.signIn.email({
+    const {  error } = await authClient.signIn.email({
       email: user.email,
       password: user.password,
     });
@@ -32,18 +32,18 @@ const LoginPage = () => {
       toast.error(error.message || "Login failed");
       return;
     }
-    router.push(next);
+    router.push(callbackUrl);
   };
 
   const handleGoogleSignin = async () => {
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: next,
+      callbackURL: callbackUrl,
     });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F5F3FF] px-4 py-16 font-inter">
+     <div className="min-h-screen flex items-center justify-center bg-[#F5F3FF] px-4 py-16 font-inter">
       <Card className="w-full max-w-md bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-sm">
 
         {/* Title */}
@@ -136,13 +136,21 @@ const LoginPage = () => {
         {/* Register Link */}
         <p className="text-center text-[#6B7280] text-sm mt-6">
           Dont have an account?{" "}
-          <a href="/register" className="text-[#7C3AED] hover:underline font-medium">
+          <a href="/signup" className="text-[#7C3AED] hover:underline font-medium">
             Register
           </a>
         </p>
 
       </Card>
     </div>
+  );
+};
+
+const LoginPage = () => {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 };
 

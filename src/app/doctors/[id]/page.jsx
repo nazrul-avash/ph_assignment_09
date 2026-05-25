@@ -1,3 +1,14 @@
+export const metadata = {
+  title: "Doctor Appointment Booking System",
+  description:
+    "Find doctors, book appointments online, and manage your medical schedule with ease. Fast, secure, and reliable healthcare booking platform.",
+  keywords: [
+    "doctor appointment",
+    "book doctor online",
+    "healthcare booking",
+    "medical appointments",
+  ],
+};
 import { BookingFormModal } from '@/components/BookingFormModal';
 import { auth } from '@/lib/auth';
 import { BriefcaseMedical, Building2, Calendar, CalendarDays, CalendarPlus2, Clock3, Mail, MapPin, Phone, User } from 'lucide-react';
